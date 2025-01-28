@@ -20,7 +20,8 @@ const Book = require("./models/book");
         console.log(`Connected to MongoDB ${mongoose.connection.name}!`) ;
     })
 
-
+    // This middleware to make sure the form send is in JSON.
+    app.use(express.urlencoded({ extended: false }));
 
 //ROUTES
 
@@ -29,7 +30,20 @@ const Book = require("./models/book");
 app.get("/books/new", (req, res) => {
     res.render("books/new.ejs");
     // res.send("URL Working")
+});
+
+
+//Create Route
+// app.post ('/books', async (req, res) => {
+//     console.log (req.body); // the information.
+//     res.redirect("/books/new"); // Redirect the route back to the main page.
+// })
+
+app.post("/books", async (req, res) => {
+    await Book.create(req.body);
+    res.redirect("/books/new"); // Redirect the route back to the main page.
 })
+
 
 let PORT = process.env.PORT || 3000;
 app.listen(PORT, (req, res) => {

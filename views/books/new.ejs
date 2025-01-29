@@ -3,12 +3,18 @@
 <body style="background-color: wheat; display: block; justify-content: center;">
     <h1 style="display: flex; justify-self: center;">Create a New Book!</h1>
     <form action="/books" method="POST" style="display: flex; justify-self: center;">
+      <br>
       <label for="name">Name:</label>
       <input type="text" name="name" id="name" />
   
       <label for="author">Author:</label>
       <input type="text" name="author" id="author" />
   
-      <button type="submit">Add Book</button>
+      <label for="year">Year:</label>
+      <input type="text" name="year" id="year" />
+
+      <button type="submit" class="" style="display: flex; justify-self: center;">Add Book</button>
     </form>
+    
+    <div class="yourLibrary"></div>
   </body>
